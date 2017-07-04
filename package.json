@@ -1,0 +1,46 @@
+{
+  "name": "conventional-changelog-colisweb",
+  "version": "0.0.0",
+  "description": "An opinionated `conventional-changelog` preset",
+  "license": "MIT",
+  "author": "Simon Degrave <simon.degraeve@gmail.com>",
+  "repository": "github:colisweb/conventional-changelog-colisweb",
+  "homepage": "https://github.com/colisweb/conventional-changelog-colisweb#readme",
+  "bugs": "https://github.com/colisweb/conventional-changelog-colisweb/issues",
+  "main": "lib/index.js",
+  "files": ["lib"],
+  "keywords": ["changelog", "conventional-changelog-preset", "colisweb"],
+  "scripts": {
+    "lint": "cwtools lint",
+    "test": "cwtools test",
+    "build": "babel --out-dir lib --ignore *.test.js,__*__ src",
+    "report-coverage": "cwtools report-coverage",
+    "release": "cwtools release"
+  },
+  "dependencies": {
+    "babel-preset-env": "^1.6.0",
+    "conventional-changelog-core": "^1.8.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "cwtools": "^1.0.0"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  },
+  "eslintConfig": {
+    "extends": "colisweb"
+  },
+  "jest": {
+    "preset": "jest-preset-saya"
+  }
+}
