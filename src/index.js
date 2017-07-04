@@ -1,8 +1,8 @@
 /**
  *
  */
-import getDefaultConfig from 'conventional-changelog-core/lib/merge-config';
-import { concat } from './utils';
+import getDefaultConfig from 'conventional-changelog-core/lib/merge-config'
+import { concat } from './utils'
 
 /**
  *
@@ -27,7 +27,7 @@ const getTemplate = () => `{{!-- --}}
 {{/each}}
 
 {{/each}}
-{{/if}}`;
+{{/if}}`
 
 /**
  *
@@ -41,92 +41,125 @@ const getTypeMapping = () => ({
   release: { name: 'Release', isVisible: false },
   test: { name: 'Test', isVisible: false },
   doc: { name: 'Documentation', isVisible: false },
-  noop: { name: 'Extraneous', isVisible: false },
-});
+  noop: { name: 'Extraneous', isVisible: false }
+})
 
 /**
  *
  */
 const getVersionLink = context => {
-  const text = context.version;
-  const link = concat([context.host, '/', context.owner, '/', context.repository, `/compare/${context.previousTag}...${context.currentTag}`]);
+  const text = context.version
+  const link = concat([
+    context.host,
+    '/',
+    context.owner,
+    '/',
+    context.repository,
+    `/compare/${context.previousTag}...${context.currentTag}`
+  ])
 
-  return context.linkCompare ? `[${text}](${link})` : text;
-};
+  return context.linkCompare ? `[${text}](${link})` : text
+}
 
 /**
  *
  */
 const getReferenceLink = (context, issue) => {
-  const text = `#${issue}`;
-  const link = concat([context.host, '/', context.owner, '/', context.repository, `/${context.issue}/${issue}`]);
+  const text = `#${issue}`
+  const link = concat([
+    context.host,
+    '/',
+    context.owner,
+    '/',
+    context.repository,
+    `/${context.issue}/${issue}`
+  ])
 
-  return `[${text}](${link})`;
-};
+  return `[${text}](${link})`
+}
 
 /**
  *
  */
 const getCommitLink = (context, hash) => {
-  const text = hash;
-  const link = concat([context.host, '/', context.owner, '/', context.repository, `/${context.commit}/${hash}`]);
+  const text = hash
+  const link = concat([
+    context.host,
+    '/',
+    context.owner,
+    '/',
+    context.repository,
+    `/${context.commit}/${hash}`
+  ])
 
-  return `[${text}](${link})`;
-};
+  return `[${text}](${link})`
+}
 
 /**
  *
  */
-const finalizeContext = context => Object.assign({}, context, { versionLink: getVersionLink(context) });
+const finalizeContext = context =>
+  Object.assign({}, context, { versionLink: getVersionLink(context) })
 
 /**
  *
  */
-const isBreakingChange = commit => !!(commit.notes.find(note => note.title.match(/Breaking/i)) || typeof commit['breaking-change'] === 'string');
+const isBreakingChange = commit =>
+  !!(
+    commit.notes.find(note => note.title.match(/Breaking/i)) ||
+    typeof commit['breaking-change'] === 'string'
+  )
 
 /**
  *
  */
 const isDeprecatingChange = commit =>
-  !!(commit.notes.find(note => note.title.match(/Deprecating/i)) || typeof commit['deprecating-change'] === 'string');
+  !!(
+    commit.notes.find(note => note.title.match(/Deprecating/i)) ||
+    typeof commit['deprecating-change'] === 'string'
+  )
 
 /**
  *
  */
 const transformCommit = typeMapping => (commit, context) => {
   // Filter valid type
-  const mappedType = typeMapping[commit.type];
+  const mappedType = typeMapping[commit.type]
   if (!mappedType || !mappedType.isVisible) {
-    return undefined;
+    return undefined
   }
 
   // Normalize type
-  const type = concat([mappedType.name, isDeprecatingChange(commit) ? '/Deprecating' : '', isBreakingChange(commit) ? '/Breaking' : '']);
+  const type = concat([
+    mappedType.name,
+    isDeprecatingChange(commit) ? '/Deprecating' : '',
+    isBreakingChange(commit) ? '/Breaking' : ''
+  ])
 
   // Normalize notes
   const notes = commit.notes.map(note =>
     Object.assign({}, note, {
       text: note.text.replace(/\n/g, '\n  '),
-      title: note.title.replace(/^D.*/i, 'Deprecating Changes').replace(/^B.*/i, 'Breaking Changes'),
-    }),
-  );
+      title: note.title.replace(/^D.*/i, 'Deprecating Changes').replace(/^B.*/i, 'Breaking Changes')
+    })
+  )
 
   // Normalize hash
-  const hash = (commit.hash || '').substring(0, 7);
-  const commitLink = getCommitLink(context, hash);
+  const hash = (commit.hash || '').substring(0, 7)
+  const commitLink = getCommitLink(context, hash)
 
   // Nornalize subject and references
-  const references = commit.references;
+  const references = commit.references
   const subject = commit.subject.replace(/#([0-9]+)/g, (_, issue) => {
-    const index = references.findIndex(reference => reference.issue === issue);
+    const index = references.findIndex(reference => reference.issue === issue)
     if (index !== -1) {
-      references.splice(index, 1);
+      references.splice(index, 1)
     }
-    return getReferenceLink(context, issue);
-  });
+    return getReferenceLink(context, issue)
+  })
 
-  return Object.assign({}, commit, { type, subject, hash, commitLink, notes, references });
-};
+  return Object.assign({}, commit, { type, subject, hash, commitLink, notes, references })
+}
 
 /**
  *
@@ -140,8 +173,8 @@ const getParserOptions = () => ({
 
   fieldPattern: /^-(.*?)-$/,
 
-  noteKeywords: ['BREAKING CHANGE', 'BREAKING CHANGES', 'DEPRECATING CHANGE', 'DEPRECATING CHANGES'],
-});
+  noteKeywords: ['BREAKING CHANGE', 'BREAKING CHANGES', 'DEPRECATING CHANGE', 'DEPRECATING CHANGES']
+})
 
 /**
  *
@@ -151,34 +184,36 @@ const getWriterOptions = config => ({
   mainTemplate: getTemplate(),
   groupBy: false,
 
-  finalizeContext: (context, options, commits, keyCommit) => finalizeContext(config.writerOpts.finalizeContext(context, options, commits, keyCommit)),
+  finalizeContext: (context, options, commits, keyCommit, originalCommits) =>
+    finalizeContext(
+      config.writerOpts.finalizeContext(context, options, commits, keyCommit, originalCommits)
+    ),
 
   noteGroupsSort: (a, b) => b.title.localeCompare(a.title),
   notesSort: () => 1,
-  commitsSort: () => 1,
-});
+  commitsSort: () => 1
+})
 
 /**
  *
  */
 const getRecommendedBump = commits => {
-  const MAJOR_LEVEL = 0;
-  const MINOR_LEVEL = 1;
-  const PATCH_LEVEL = 2;
+  const MAJOR_LEVEL = 0
+  const MINOR_LEVEL = 1
+  const PATCH_LEVEL = 2
 
-  let level = PATCH_LEVEL;
+  let level = PATCH_LEVEL
 
   commits.forEach(commit => {
     if (isBreakingChange(commit)) {
-      level = MAJOR_LEVEL;
+      level = MAJOR_LEVEL
+    } else if (commit.type === 'feat' && level === PATCH_LEVEL) {
+      level = MINOR_LEVEL
     }
-    else if (commit.type === 'feat' && level === PATCH_LEVEL) {
-      level = MINOR_LEVEL;
-    }
-  });
+  })
 
-  return level;
-};
+  return level
+}
 
 /**
  *
@@ -187,5 +222,5 @@ export default getDefaultConfig().then(config => ({
   parserOpts: getParserOptions(),
   writerOpts: getWriterOptions(config),
   whatBump: getRecommendedBump,
-  releaseCommitMessage: 'release: Publish version %s',
-}));
+  releaseCommitMessage: 'release: Publish version %s'
+}))
