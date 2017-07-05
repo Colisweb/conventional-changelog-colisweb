@@ -1,3 +1,9 @@
+<a name="1.0.10"></a>
+## [1.0.10](https://github.com/colisweb/conventional-changelog-colisweb/compare/v1.0.9...v1.0.10)
+> 2017-07-05
+
+* [f8e77ff](https://github.com/colisweb/conventional-changelog-colisweb/commit/f8e77ff) **Dependency:** Update aslant-config-colisweb
+
 <a name="1.0.9"></a>
 ## [1.0.9](https://github.com/colisweb/conventional-changelog-colisweb/compare/v1.0.8...v1.0.9)
 > 2017-07-05
