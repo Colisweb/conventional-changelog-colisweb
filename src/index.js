@@ -218,9 +218,12 @@ const getRecommendedBump = commits => {
 /**
  *
  */
-export default getDefaultConfig().then(config => ({
+const config = getDefaultConfig().then(config => ({
   parserOpts: getParserOptions(),
   writerOpts: getWriterOptions(config),
   whatBump: getRecommendedBump,
   releaseCommitMessage: 'release: Publish version %s'
 }))
+
+export default config
+module.exports = config
