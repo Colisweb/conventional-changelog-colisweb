@@ -1014,9 +1014,9 @@ conventional-changelog-codemirror@^0.1.0:
   dependencies:
     q "^1.4.1"
 
-conventional-changelog-colisweb@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/conventional-changelog-colisweb/-/conventional-changelog-colisweb-1.0.0.tgz#1ef01f95c4111bfc1e8d81b4c40f2515b0a91d90"
+conventional-changelog-colisweb@^1.0.1:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/conventional-changelog-colisweb/-/conventional-changelog-colisweb-1.0.2.tgz#d23b3cab215f1aa3c92e3ea75f28d8fe465b5c96"
   dependencies:
     conventional-changelog-core "^1.8.0"
 
@@ -1183,13 +1183,13 @@ cwd@^0.9.1:
   dependencies:
     find-pkg "^0.1.0"
 
-cwtools@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/cwtools/-/cwtools-1.0.0.tgz#3d838783035b1dbd6f55ebc0233f0cafe3212af7"
+cwtools@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/cwtools/-/cwtools-1.0.2.tgz#250f689ec1a3c36e6fefeed2e570023b65018989"
   dependencies:
     any-observable "^0.2.0"
     conventional-changelog-cli "^1.2.0"
-    conventional-changelog-colisweb "1.0.0"
+    conventional-changelog-colisweb "^1.0.1"
     conventional-recommended-bump "^0.3.0"
     del "^2.2.2"
     execa "^0.5.0"
