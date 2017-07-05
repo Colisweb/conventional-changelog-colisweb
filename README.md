@@ -10,7 +10,7 @@
 ## Install
 
 ```
-npm install conventional-changelog-colisweb
+yarn add conventional-changelog-colisweb
 ```
 
 
