@@ -1,6 +1,6 @@
 {
   "name": "conventional-changelog-colisweb",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "author": "Simon Degrave <simon.degraeve@gmail.com>",
   "repository": "github:colisweb/conventional-changelog-colisweb",
@@ -16,11 +16,11 @@
     "release": "cwtools release"
   },
   "dependencies": {
-    "babel-preset-env": "^1.6.0",
     "conventional-changelog-core": "^1.8.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
     "eslint-config-colisweb": "^1.0.0",
     "jest": "^20.0.4",
     "rimraf": "^2.6.1"
