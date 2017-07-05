@@ -1,3 +1,9 @@
+<a name="1.0.9"></a>
+## [1.0.9](https://github.com/colisweb/conventional-changelog-colisweb/compare/v1.0.8...v1.0.9)
+> 2017-07-05
+
+* [d11ad47](https://github.com/colisweb/conventional-changelog-colisweb/commit/d11ad47) **Dependency:** Update cwtools to v1.0.3
+
 <a name="1.0.8"></a>
 ## [1.0.8](https://github.com/colisweb/conventional-changelog-colisweb/compare/v1.0.2...v1.0.8)
 > 2017-07-05
