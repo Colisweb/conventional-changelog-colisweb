@@ -1,5 +1,4 @@
 # conventional-changelog-colisweb
-> An opinionated `conventional-changelog` preset
 
 [![NPM Version][npm-img]][npm-link]
 [![Licence][licence-img]][licence-link]
