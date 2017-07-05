@@ -2,19 +2,14 @@
   "name": "conventional-changelog-colisweb",
   "version": "1.0.9",
   "license": "MIT",
+  "description": "Changelog preset for colisweb",
   "author": "Simon Degrave <simon.degraeve@gmail.com>",
   "repository": "github:colisweb/conventional-changelog-colisweb",
   "homepage": "https://github.com/colisweb/conventional-changelog-colisweb#readme",
   "bugs": "https://github.com/colisweb/conventional-changelog-colisweb/issues",
   "main": "lib/index.js",
-  "files": [
-    "lib"
-  ],
-  "keywords": [
-    "changelog",
-    "conventional-changelog-preset",
-    "colisweb"
-  ],
+  "files": ["lib"],
+  "keywords": ["changelog", "conventional-changelog-preset", "colisweb"],
   "scripts": {
     "lint": "cwformat",
     "test": "jest",

@@ -1,4 +1,5 @@
 # conventional-changelog-colisweb
+> Changelog preset for colisweb
 
 [![NPM Version][npm-img]][npm-link]
 [![Licence][licence-img]][licence-link]
