@@ -1415,9 +1415,9 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-config-colisweb@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-colisweb/-/eslint-config-colisweb-1.0.0.tgz#0c5de835d98d1220363343d6ac5ff7036feba5fb"
+eslint-config-colisweb@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-colisweb/-/eslint-config-colisweb-1.0.1.tgz#9c5d53c6bbfb7d037e0d5f8affaa5c387a3e8a23"
   dependencies:
     eslint-config-standard "^10.2.1"
     eslint-config-standard-react "^5.0.0"
