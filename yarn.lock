@@ -1184,8 +1184,8 @@ cwd@^0.9.1:
     find-pkg "^0.1.0"
 
 cwtools@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/cwtools/-/cwtools-1.0.3.tgz#147fa3f719c51f7d0fa5aaa704bc6adc7a9679ab"
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/cwtools/-/cwtools-1.0.6.tgz#3949acba6f6c80beee8cbcba86fd6d5df2bb5c8f"
   dependencies:
     any-observable "^0.2.0"
     conventional-changelog-cli "^1.2.0"
